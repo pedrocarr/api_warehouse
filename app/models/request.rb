@@ -5,5 +5,5 @@ class Request < ApplicationRecord
   has_one :response
 
   validates :url, presence: true
-  validates :method, inclusion: { in: METHODS, message: "#{value} is not a valid HTTP method" }
+  validates :method, inclusion: { in: METHODS, message: "%{value} is not a valid HTTP method" }
 end
