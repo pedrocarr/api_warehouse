@@ -11,8 +11,9 @@ def create
 
   if @request.save
     response = make_api_request(@request)
+    @request.create_response(body: response.body, status_code: response.code)
 
-    redirect_to @request
+    redirect_to requests_path
   else
     render :index
   end
@@ -25,7 +26,7 @@ end
 private
 
 def request_params
-  params.require(:request).permit(:url, :method, :body, :authorization, :headers, :parameters)
+  params.require(:request).permit(:url)
 end
 
 def make_api_request(request)
