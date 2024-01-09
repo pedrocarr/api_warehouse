@@ -1,5 +1,5 @@
 class Request < ApplicationRecord
-  METHODS = %w[GET POST PUT DELETE]
+  METHODS = %w[GET]
   belongs_to :user
 
   has_one :response
