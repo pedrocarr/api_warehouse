@@ -5,5 +5,5 @@ class Request < ApplicationRecord
   has_one :response
 
   validates :url, presence: true
-  validates :method, inclusion: { in: METHODS }
+  # validates :method, inclusion: { in: METHODS }
 end
