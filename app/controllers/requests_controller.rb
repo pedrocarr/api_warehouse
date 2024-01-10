@@ -13,7 +13,10 @@ def create
     response = make_api_request(@request)
     @request.create_response(body: response.body, status_code: response.code)
 
-    redirect_to requests_path
+    respond_to do |format|
+      format.html { redirect_to requests_path }
+      format.json { render json: { body: response.body, status_code: response.code } }
+    end
   else
     render :index
   end

@@ -1,5 +1,14 @@
-<h1>Requests</h1>
-<%= simple_form_for(@request) do |f| %>
-  <%= f.input :url, label: 'URL' %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
+<div data-controller="requests" class="container mt-4">
+  <h1 class="mb-4">Requests</h1>
+  <%= simple_form_for(@request, data: { action: "submit->requests#makeRequest" }, html: { class: "mb-4" }) do |f| %>
+    <div class="input-group">
+      <%= f.input :url, label: 'URL', input_html: { data: { "requests-target": "url" }, class: "form-control" } %>
+      <div class="input-group-append">
+        <%= f.button :submit, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+  <div class="mt-4">
+    <textarea data-requests-target="response" rows="10" class="form-control" readonly></textarea>
+  </div>
+</div>
