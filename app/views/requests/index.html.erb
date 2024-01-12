@@ -5,8 +5,8 @@
       <%= f.input :url, label: false, input_html: { data: { "requests-target": "url" }, class: "form-label", placeholder: "Enter API URL here..." } %>
       <%= f.button :submit, class: 'btn btn-primary', value: "Make Request" %>
     </div>
-    <div class="mt-4">
-      <textarea data-requests-target="response" rows="10" class="form-control" readonly></textarea>
+    <div class="code mt-4">
+      <pre data-requests-target="response" class="form-control pre-scrollable" readonly><code class="json"></code></pre>
     </div>
   </div>
 <% end %>
