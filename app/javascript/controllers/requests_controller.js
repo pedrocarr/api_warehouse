@@ -12,7 +12,12 @@ export default class extends Controller {
     event.preventDefault()
 
     const url = this.urlTarget.value
-    // Submit the form with AJAX
+
+    if (url === "") {
+      alert("URL cannot be blank");
+      return;
+    }
+
     fetch('/requests', {
       method: 'POST',
       headers: {
@@ -24,12 +29,20 @@ export default class extends Controller {
     })
     .then(response => response.json())
     .then(data => {
-      // Update the DOM with the response
-      this.responseTarget.textContent = JSON.stringify(data, null, 2)
+      this.responseTarget.querySelector('code').textContent = `
+      {
+        Status Code: ${JSON.stringify(data.status_code)},
+        Body: ${JSON.stringify(data.body, null, 2).replace(/[\\]/g, '')}
+      }
+      `
+      Prism.highlightElement(this.responseTarget.querySelector('code'));
     })
     .catch(error => {
-      console.error('Error:', error)
-      // Handle error if needed
+      this.responseTarget.querySelector('code').textContent = `
+      {
+        Error: ${error.message}
+      }
+      `
     })
   }
 }
