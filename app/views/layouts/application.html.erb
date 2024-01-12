@@ -8,6 +8,15 @@
     <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js' %>
+    <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/prismjs@1.24.1/themes/prism.css' %>
+    <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js' %>
+    <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-json.min.js' %>
+    <script>
+      hljs.highlightAll();
+    </script>
   </head>
   <body>
     <%= render partial: 'layouts/navbar' %>
