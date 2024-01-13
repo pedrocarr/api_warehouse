@@ -121,6 +121,7 @@ GEM
       sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hiredis (0.6.3)
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
@@ -291,6 +292,7 @@ DEPENDENCIES
   devise
   error_highlight (>= 0.4.0)
   font-awesome-sass (~> 6.1)
+  hiredis
   httparty
   importmap-rails
   jbuilder
