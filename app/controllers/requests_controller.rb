@@ -1,4 +1,6 @@
 require 'httparty'
+require 'json'
+
 class RequestsController < ApplicationController
   before_action :authenticate_user!
 
@@ -35,7 +37,7 @@ end
 def make_api_request(request)
   response = HTTParty.get(request.url)
   if response.success?
-    puts "Request successful. Body: #{response.body}, Status Code: #{response.code}"
+    puts JSON.pretty_generate(response.body)
   else
     puts "Request failed. Status Code: #{response.code}, Response Body: #{response.body}"
   end
