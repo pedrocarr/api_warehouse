@@ -1,1 +1,9 @@
 // Specific CSS for your home-page
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
+  position: relative;
+  padding-bottom: 100px; /* Adjust the padding to match the footer height */
+  box-sizing: border-box;
+}
