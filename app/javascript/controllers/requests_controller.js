@@ -27,14 +27,13 @@ export default class extends Controller {
       },
       body: JSON.stringify({ url: url })
     })
-    .then(response => response.json())
+    .then(response =>
+      response.json()
+    )
     .then(data => {
-      this.responseTarget.querySelector('code').textContent = `
-      {
-        Status Code: ${JSON.stringify(data.status_code)},
-        Body: ${JSON.stringify(data.body, null, 2).replace(/[\\]/g, '')}
-      }
-      `
+      const formattedJson = JSON.stringify(JSON.parse(data.body), null, 2);
+      console.log(formattedJson)
+      this.responseTarget.querySelector('code').textContent = `${formattedJson}`
       Prism.highlightElement(this.responseTarget.querySelector('code'));
     })
     .catch(error => {

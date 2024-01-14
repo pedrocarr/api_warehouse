@@ -37,9 +37,9 @@ end
 def make_api_request(request)
   response = HTTParty.get(request.url)
   if response.success?
-    puts JSON.pretty_generate(response.body)
+    puts "deu certo #{response}"
   else
-    puts "Request failed. Status Code: #{response.code}, Response Body: #{response.body}"
+    puts 'Request failed. Status Code'
   end
   response
 end
