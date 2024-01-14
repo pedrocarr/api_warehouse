@@ -3,7 +3,15 @@
     pre {
       code.json {
         white-space: pre;
+        font-size: 0.85em;
       }
+      span.token.property {
+        color: #01070a;
+      }
+      span.token{
+        color: #b92225;
+      }
+
     }
   }
 }
