@@ -32,15 +32,13 @@ export default class extends Controller {
     )
     .then(data => {
       const formattedJson = JSON.stringify(JSON.parse(data.body), null, 2);
-      console.log(formattedJson)
       this.responseTarget.querySelector('code').textContent = `${formattedJson}`
       Prism.highlightElement(this.responseTarget.querySelector('code'));
     })
     .catch(error => {
+      console.log(error);
       this.responseTarget.querySelector('code').textContent = `
-      {
-        Error: ${error.message}
-      }
+      Something went wrong with the request, check endpoint!
       `
     })
   }
