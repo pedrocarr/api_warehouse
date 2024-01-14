@@ -13,7 +13,7 @@ def create
   if @request.save
     begin
       response = make_api_request(@request)
-      @request.create_response(body: response.body, status_code: response.code)
+      saved_response = @request.create_response(body: response.body, status_code: response.code)
 
       respond_to do |format|
         format.html { redirect_to requests_path }
@@ -29,6 +29,7 @@ end
 
 def show
   @request = current_user.requests.find(params[:id])
+  @response = @request.response
 end
 
 private
