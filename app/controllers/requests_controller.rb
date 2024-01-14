@@ -1,5 +1,4 @@
 require 'httparty'
-require 'json'
 
 class RequestsController < ApplicationController
   before_action :authenticate_user!
@@ -12,12 +11,16 @@ def create
   @request = current_user.requests.new(request_params)
 
   if @request.save
-    response = make_api_request(@request)
-    @request.create_response(body: response.body, status_code: response.code)
+    begin
+      response = make_api_request(@request)
+      @request.create_response(body: response.body, status_code: response.code)
 
-    respond_to do |format|
-      format.html { redirect_to requests_path }
-      format.json { render json: { body: response.body, status_code: response.code } }
+      respond_to do |format|
+        format.html { redirect_to requests_path }
+        format.json { render json: { body: response.body, status_code: response.code } }
+      end
+    rescue HTTParty::Error => e
+      handle_httparty_error(e)
     end
   else
     render :index
@@ -35,12 +38,15 @@ def request_params
 end
 
 def make_api_request(request)
-  response = HTTParty.get(request.url)
-  if response.success?
-    puts "deu certo #{response}"
-  else
-    puts 'Request failed. Status Code'
+  HTTParty.get(request.url)
+end
+
+def handle_httparty_error(error)
+  Rails.logger.error("HTTParty Error: #{error.message}")
+
+  respond_to do |format|
+    format.html { redirect_to requests_path, alert: 'Request failed.' }
+    format.json { render json: { error: 'Request failed.' }, status: :unprocessable_entity }
   end
-  response
 end
 end
