@@ -1,12 +1,25 @@
-<div data-controller="requests" class="container mt-4">
-  <h1 class="mb-4">Requests</h1>
+<div data-controller="requests" class="container mt-4 text-center">
+  <h1 class="mb-4 justify-content-center">Playground</h1>
   <%= simple_form_for(@request, data: { action: "submit->requests#makeRequest" }, html: { class: "mb-4" }) do |f| %>
-    <div class="mb-3">
-      <%= f.input :url, label: false, input_html: { data: { "requests-target": "url" }, class: "form-label", placeholder: "Enter API URL here..." } %>
-      <%= f.button :submit, class: 'btn btn-primary', value: "Make Request" %>
+    <div class="row">
+      <div class="col-auto">
+        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+        <select class="form-select" id="inlineFormSelectPref">
+          <option selected>GET</option>
+          <option value="1">POST</option>
+          <option value="2">PUT</option>
+          <option value="3">DELETE</option>
+        </select>
+      </div>
+      <div class="col">
+        <%= f.input :url, label: false, input_html: { data: { "requests-target": "url" }, class: "form-label", placeholder: "Enter API URL here..." } %>
+      </div>
+      <div class="col-auto">
+        <%= f.button :submit, class: 'btn btn-outline-dark mb-3', value: "SEND" %>
+      </div>
     </div>
     <div class="code mt-4">
-      <pre data-requests-target="response" class="form-control pre-scrollable" readonly><code class="json"></code></pre>
+      <pre data-requests-target="response" class="form-label pre-scrollable" readonly><code class="json"></code></pre>
     </div>
   </div>
 <% end %>
