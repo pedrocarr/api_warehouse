@@ -1,25 +1,41 @@
-<div data-controller="requests" class="container mt-4 text-center">
-  <h1 class="mb-4 justify-content-center">Playground</h1>
-  <%= simple_form_for(@request, data: { action: "submit->requests#makeRequest" }, html: { class: "mb-4" }) do |f| %>
-    <div class="row">
-      <div class="col-auto">
-        <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-        <select class="form-select" id="inlineFormSelectPref">
-          <option selected>GET</option>
-          <option value="1">POST</option>
-          <option value="2">PUT</option>
-          <option value="3">DELETE</option>
-        </select>
-      </div>
-      <div class="col">
-        <%= f.input :url, label: false, input_html: { data: { "requests-target": "url" }, class: "form-label", placeholder: "Enter API URL here..." } %>
-      </div>
-      <div class="col-auto">
-        <%= f.button :submit, class: 'btn btn-outline-dark mb-3', value: "SEND" %>
+<!-- app/views/requests/index.html.erb -->
+<div data-controller="requests" class="container-fluid mt-4">
+  <div class="row">
+    <!-- Left Sidebar (Navbar) -->
+    <div class="col-lg-2 vh-100">
+      <div class="container">
+        <%= render partial: 'layouts/navbar_vertical' %>
       </div>
     </div>
-    <div class="code mt-4">
-      <pre data-requests-target="response" class="form-label pre-scrollable" readonly><code class="json"></code></pre>
+    <!-- Main Content -->
+    <div class="col-lg-10">
+      <h1 class="mb-4 justify-content-center">Playground</h1>
+      <%= simple_form_for(@request, data: { action: "submit->requests#makeRequest" }, html: { class: "mb-4" }) do |f| %>
+        <div class="row">
+          <div class="col-md-auto">
+            <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+            <select class="form-select" id="inlineFormSelectPref" name="request[method]">
+              <option selected>GET</option>
+              <option value="POST">POST</option>
+              <option value="PUT">PUT</option>
+              <option value="DELETE">DELETE</option>
+            </select>
+          </div>
+          <div class="col-lg-8">
+            <%= f.input :url, label: false, input_html: { data: { "requests-target": "url" }, class: "form-label", placeholder: "Enter API URL here..." } %>
+          </div>
+          <div class="col-md-auto">
+            <%= f.button :submit, class: 'btn btn-outline-dark mb-3', value: "SEND" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-10">
+            <div class="code mt-4">
+              <pre data-requests-target="response" class="form-label pre-scrollable" readonly><code class="json"></code></pre>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
-<% end %>
+</div>
