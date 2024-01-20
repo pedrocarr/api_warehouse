@@ -1,0 +1,11 @@
+<div class="container" >
+  <%= link_to "Back to Playground", root_request_path %>
+  <div class="code mt-4">
+    <pre data-requests-target="response" class="form-label pre-scrollable" readonly>
+      <code class="json">
+        <%= JSON.pretty_generate(JSON.parse(@request.response.body)) %>
+    </code>
+    </pre>
+    <%= link_to "Back to Playground", root_request_path %>
+  </div>
+</div>
