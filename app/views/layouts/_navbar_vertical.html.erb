@@ -1,14 +1,12 @@
 <ul class="nav flex-column">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#">Active</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled">Disabled</a>
-  </li>
+  <% @requests.each do |request| %>
+    <% if request.response.present? %>
+      <%= request.method %>
+      <%= request.url %>
+      <li class="nav-item">
+        <%= link_to "Delete Request", request_path(request), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <%= link_to "Show Request", request_path(request) %>
+      </li>
+    <% end %>
+  <% end %>
 </ul>
