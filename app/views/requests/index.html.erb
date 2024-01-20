@@ -1,15 +1,12 @@
-<!-- app/views/requests/index.html.erb -->
 <div data-controller="requests" class="container-fluid mt-4">
   <div class="row">
-    <!-- Left Sidebar (Navbar) -->
     <div class="col-lg-2 vh-100">
       <div class="container">
         <%= render partial: 'layouts/navbar_vertical' %>
       </div>
     </div>
-    <!-- Main Content -->
     <div class="col-lg-10">
-      <h1 class="mb-4 justify-content-center">Playground</h1>
+      <h1 class="mb-4">Playground</h1>
       <%= simple_form_for(@request, data: { action: "submit->requests#makeRequest" }, html: { class: "mb-4" }) do |f| %>
         <div class="row">
           <div class="col-md-auto">
