@@ -11,7 +11,7 @@ services:
     plan: free # optional (defaults to starter)
     maxmemoryPolicy: allkeys-lfu # optional (defaults to allkeys-lru). Rails recommends allkeys-lfu as a default.
   - type: web
-    name: mysite
+    name: apiwarehouse
     runtime: ruby
     plan: free
     buildCommand: "./bin/render-build.sh"
