@@ -23,6 +23,11 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
 
+    - name: Install Render CLI
+      run: |
+        curl -o /usr/local/bin/render -L https://render.com/download/render-cli/linux/latest
+        chmod +x /usr/local/bin/render
+
     - name: Deploy to Render
       run: |
         render deploy --file=./render.yaml
