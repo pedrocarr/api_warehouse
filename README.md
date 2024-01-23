@@ -1,24 +1,45 @@
-# README
+# API WAREHOUSE - The House Of API's
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API WAREHOUSE is a Rails application designed to serve as a centralized repository for APIs.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+### Prerequisites
 
-* System dependencies
+- Ruby (version 3.1.2 recommended)
+- Bundler
 
-* Configuration
+### Steps
 
-* Database creation
+1. Clone the repository (SSH):
 
-* Database initialization
+   ```bash
+   git clone git@github.com:pedrocarr/api_warehouse.git
+    ```
 
-* How to run the test suite
+2. Change to the project directory:
 
-* Services (job queues, cache servers, search engines, etc.)
+   ```bash
+   cd api_warehouse
+    ```
 
-* Deployment instructions
+3. Install dependencies using Bundler:
 
-* ...
+   ```bash
+   bundle install
+    ```
+
+4. Run migrations
+
+   ```bash
+   rails db:migrate
+    ```
+
+### Usage
+
+Run the rails server to start the application
+
+   ```bash
+   rails server
+   ```
+The application will be accessible at http://localhost:3000.
