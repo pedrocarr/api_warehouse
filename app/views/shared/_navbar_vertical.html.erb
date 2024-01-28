@@ -1,23 +1,21 @@
-<div class="scrollable-x">
-  <ul class="nav flex-column">
-    <% @requests.each do |request| %>
-      <% if request.response.present? %>
-        <div class="container mb-2">
-          <span class="nav-item">
-            <%= request.url %>
-          </span>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-auto">
-                <%= button_to "Show", request_path(request), class: 'btn btn-outline-dark btn-sm', method: :get %>
-              </div>
-              <div class="col">
-                <%= button_to "Delete", request_path(request), method: :delete, data: { turbo_confirm: "Are you sure?"}, class: 'btn btn-outline-danger btn-sm' %>
-              </div>
+<ul class="nav flex-column">
+  <h3>My requests</h3>
+  <% @requests.each do |request| %>
+    <% if request.response.present? %>
+      <div class="container mb-2">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <%= link_to request_path(request) do %>
+                <strong> <%= request.url %></strong>
+              <% end %>
+            </div>
+            <div class="col">
+              <%= button_to "X", request_path(request), method: :delete, data: { turbo_confirm: "Are you sure?"}, class: 'btn btn-outline-danger btn-sm' %>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
-  </ul>
-</div>
+  <% end %>
+</ul>
