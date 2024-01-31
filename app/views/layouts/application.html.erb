@@ -14,8 +14,15 @@
     <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/json.min.js', async: true %>
     <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.min.js', async: true %>
     <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-json.min.js', async: true %>
+    <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js', async: true %>
     <script async="true" as="script">
       hljs.highlightAll();
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        new ClipboardJS('.btn');
+        clipboard.destroy();
+      });
     </script>
   </head>
   <body>
