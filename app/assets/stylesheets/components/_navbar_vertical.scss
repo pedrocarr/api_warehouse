@@ -1,5 +1,27 @@
 .nav {
-  height: 100vh;
-  overflow-x: scroll;
+  padding: 10px 20px;
+  height: calc(100vh - 55px);
+  overflow-y: scroll;
+  flex-basis: 300px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.1) inset;
+  background: white;
   border-right: 1px solid #E5E5E5;
+  display: block;
+  font-size: small;
+}
+
+.mb-2 {
+    display: contents;
+}
+
+
+.main-title {
+  font-size: 18px;
+  font-weight: bolder;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.col {
+  margin-bottom: 10px;
 }
