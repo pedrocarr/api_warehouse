@@ -1,31 +1,27 @@
 <div data-controller="requests" class="container-fluid mt-4">
   <div class="row">
-    <div class="col-2 vh-100">
-      <div class="container">
-        <%= render partial: 'shared/navbar_vertical' %>
-      </div>
+    <div class="col-2">
+      <%= render partial: 'shared/navbar_vertical' %>
     </div>
     <div class="col-sm-10">
       <h1 class="mb-4">Playground</h1>
-      <%= turbo_frame_tag "first_turbo_frame" do %>
-        <%= simple_form_for(@request, data: { action: "submit->requests#makeRequest" }, html: { class: "mb-4" }) do |f| %>
-          <div class="row">
-            <div class="col-md-auto">
-              <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-              <select class="form-select" id="inlineFormSelectPref" name="request[method]">
-                <option selected>GET</option>
-                <option value="POST">POST</option>
-                <option value="PUT">PUT</option>
-                <option value="DELETE">DELETE</option>
-              </select>
-            </div>
-            <div class="col-md-8">
-              <%= f.input :url, label: false, input_html: { data: { "requests-target": "url" }, class: "form-label", placeholder: "Enter API URL here..." } %>
-            </div>
-            <div class="col-md-auto">
-              <%= f.button :submit, class: 'btn btn-outline-dark mb-3', value: "SEND" %>
-            </div>
-          <% end %>
+      <%= simple_form_for(@request, data: { action: "submit->requests#makeRequest" }, html: { class: "mb-4" }) do |f| %>
+        <div class="row">
+          <div class="col-md-auto">
+            <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+            <select class="form-select" id="inlineFormSelectPref" name="request[method]">
+              <option selected>GET</option>
+              <option value="POST">POST</option>
+              <option value="PUT">PUT</option>
+              <option value="DELETE">DELETE</option>
+            </select>
+          </div>
+          <div class="col-md-8">
+            <%= f.input :url, label: false, input_html: { data: { "requests-target": "url" }, class: "form-label", placeholder: "Enter API URL here..." } %>
+          </div>
+          <div class="col-md-auto">
+            <%= f.button :submit, class: 'btn btn-outline-dark mb-3', value: "SEND" %>
+          </div>
         <% end %>
       </div>
       <div class="row">

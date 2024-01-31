@@ -1,5 +1,5 @@
 <ul class="nav flex-column">
-  <h3>My requests</h3>
+  <h3 class="main-title">My requests</h3>
   <% @requests.each do |request| %>
     <% if request.response.present? %>
       <div class="container mb-2">
@@ -11,7 +11,7 @@
               <% end %>
             </div>
             <div class="col">
-              <%= button_to "X", request_path(request), method: :delete, data: { turbo_confirm: "Are you sure?"}, class: 'btn btn-outline-danger btn-sm' %>
+              <%= button_to "Delete", request_path(request), method: :delete, data: { turbo_confirm: "Are you sure?"}, class: 'btn btn-outline-danger btn-sm' %>
             </div>
           </div>
         </div>
