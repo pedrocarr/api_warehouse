@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   resources :requests, only: [:index, :create, :show, :destroy]
   root "requests#index", as: :root_request
-  get "about" => "pages#about"
 end
