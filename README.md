@@ -2,44 +2,54 @@
 
 API WAREHOUSE is a Rails application designed to serve as a centralized repository for APIs.
 
-## Installation
+## Development Setup
 
 ### Prerequisites
 
-- Ruby (version 3.1.2 recommended)
-- Bundler
+Make sure you have [Docker](https://www.docker.com/) installed on your machine.
 
-### Steps
+### Running the Development Environment
 
-1. Clone the repository (SSH):
+1. **Clone the repository:**
 
-   ```bash
-   git clone git@github.com:pedrocarr/api_warehouse.git
+    ```bash
+    git clone https://github.com/your-username/api_warehouse.git
     ```
 
-2. Change to the project directory:
+2. **Navigate to the project directory:**
 
-   ```bash
-   cd api_warehouse
+    ```bash
+    cd api_warehouse
     ```
 
-3. Install dependencies using Bundler:
+3. **Build and run the development environment using Docker Compose:**
 
-   ```bash
-   bundle install
+    ```bash
+    docker-compose up --build
     ```
 
-4. Run migrations
+    This command will build the Docker image for your Rails application and start both the Rails app and the PostgreSQL database.
 
-   ```bash
-   rails db:migrate
-    ```
+4. **Access the running Rails application:**
 
-### Usage
+    Once the Docker containers are up and running, you can access your Rails application at [http://localhost:3000](http://localhost:3000).
 
-Run the rails server to start the application
+5. **Run migrations on Rails localhost interface:**
 
-   ```bash
-   rails server
-   ```
-The application will be accessible at http://localhost:3000.
+    You have to click on Run Migrations in the browser and the application will start.
+
+### Stopping the Development Environment
+
+To stop the development environment, press `Ctrl+C` in the terminal where `docker-compose` is running, and then run:
+
+```bash
+docker-compose down
+```
+
+This will stop and remove the running Docker containers.
+
+# Notes
+
+The development environment is configured to use PostgreSQL as the database. Make sure you have Docker running before starting the environment.
+Customize the environment variables and configurations in the docker-compose.yml and Dev.dockerfile files based on your project's requirements.
+If you encounter any issues or need additional information, feel free to contact our support team or check our documentation.
